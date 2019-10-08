@@ -1,0 +1,23 @@
+<article class="col-8 offset-2">
+    <div class="row form-group">
+        <div class="col-6 text-center">
+            <label for="">Detail </label>
+        </div>
+        <div class="col-6 text-center">
+            <label for="">Date </label>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-6">
+            <input class="form-control" type="text" [ngClass]="{alert: valid == true && detail == null}"
+                [(ngModel)]="detail" required>
+        </div>
+        <div class="col-6">
+            <input class="form-control" type="date" [ngClass]="{alert: valid == true && date == null}"
+                [(ngModel)]="date" required>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn btn-primary m-auto" (click)="valider()">Valider</button>
+    </div>
+</article>

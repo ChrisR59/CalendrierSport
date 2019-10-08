@@ -11,5 +11,4 @@ export class BackofficeComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

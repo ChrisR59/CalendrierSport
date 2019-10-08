@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
 import { ApiService } from '../api.service';
 
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  selector: 'app-list-event',
+  templateUrl: './list-event.component.html',
+  styleUrls: ['./list-event.component.css']
 })
-export class CalendarComponent implements OnInit {
-  calendarPlugins = [dayGridPlugin]; // important!
+export class ListEventComponent implements OnInit {
   events = [];
 
   constructor(private api:ApiService) { }

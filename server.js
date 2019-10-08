@@ -26,17 +26,14 @@ app.use(express.static(__dirname + '/dist'));
 
 //Retourner liste des tracks
 //Retourne la liste de date du calendrier
-app.get('/tracks', (req, res) => {
+app.get('/events', (req, res) => {
     res.json(calendar);
 });
 
 //Ajoute un object content des dates
-app.post('/addTrack', (req, res) => {
+app.post('/addEvent', (req, res) => {
     const data = req.body;
-    tracks.push({
-        id: (tracks.length == 0) ? 1 : tracks[tracks.length - 1].id + 1,
-        ...data
-    })
+    calendar.push(data);
     writeFiles();
     res.json({ error: false });
 })

@@ -3,7 +3,7 @@ const express = require('express'),
     fs = require('fs'),
     app = express(),
     calendar = JSON.parse(fs.readFileSync('data/calendar.json', 'utf-8')),
-    port = 8084;
+    port = 8085;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -38,6 +38,26 @@ app.post('/addEvent', (req, res) => {
     res.json({ error: false });
 })
 
+//Retourner liste des event by search
+/*
+    req => search
+*/
+app.post('/events', (req, res) => {
+    let data = req.body;
+    const searchEvents = calendar.filter(x => x.title.toLowerCase().includes(data.search));
+    res.json(searchEvents);
+})
+
+//Supprime un element
+app.post('/deleteEvent', (req,res) => {
+    let e = req.body;
+    console.log(calendar.lenght);
+    for (let i= 0; i < calendar.lenght;i++) {
+        if (calendar[i].title == e.title && calendar[i].date == e.date) {
+            calendar.splice(i,1);
+        }
+    }
+    res.json(calendar); 
+})
+
 app.listen(port);
-
-

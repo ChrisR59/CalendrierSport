@@ -22,7 +22,6 @@ export class ListEventComponent implements OnInit {
         this.events = res;
       })
     })
-    console.dir(this.events.length);
   }
 
   delete = (e) => {

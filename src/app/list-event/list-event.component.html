@@ -1,12 +1,12 @@
 <article>
     <div class="row m-1" *ngFor="let e of events">
-        <div class="col-4">
+        <div class="col">
             {{ e.title }}
         </div>
         <div class="col-2">
             {{ e.date }}
         </div>
-        <div class="col">
+        <div class="col-2">
             <button class="btn btn-danger" (click)="delete(e)">Supprimer event</button>
         </div>
     </div>

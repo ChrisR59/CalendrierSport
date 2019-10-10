@@ -2,6 +2,8 @@
     <h2>Back Office</h2>
     <app-add-event></app-add-event>
     <hr>
-    <input type="text" (keyup)="change()" [(ngModel)]="search">
+    <div class="col-12 form-group m-3 p-3">
+        <input type="text" class="form-control" (keyup)="change()" [(ngModel)]="search">
+    </div>
     <app-list-event></app-list-event>
 </section>

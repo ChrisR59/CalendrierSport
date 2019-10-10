@@ -51,12 +51,13 @@ app.post('/events', (req, res) => {
 //Supprime un element
 app.post('/deleteEvent', (req,res) => {
     let e = req.body;
-    console.log(calendar.lenght);
-    for (let i= 0; i < calendar.lenght;i++) {
+    for (let i= 0; i < calendar.length;i++) {
         if (calendar[i].title == e.title && calendar[i].date == e.date) {
             calendar.splice(i,1);
+            break;
         }
     }
+    writeFiles();
     res.json(calendar); 
 })
 

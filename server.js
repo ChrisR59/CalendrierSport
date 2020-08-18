@@ -24,7 +24,6 @@ const writeFiles = () => {
 app.use(express.static(__dirname + '/dist'));
 
 
-//Retourner liste des tracks
 //Retourne la liste de date du calendrier
 app.get('/events', (req, res) => {
     res.json(calendar);
@@ -37,7 +36,7 @@ app.post('/addEvent', (req, res) => {
     writeFiles();
     res.json({ error: false });
 })
-
+ 
 //Retourner liste des event by search
 /*
     req => search

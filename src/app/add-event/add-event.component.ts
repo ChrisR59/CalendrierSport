@@ -21,5 +21,8 @@ export class AddEventComponent implements OnInit {
     this.valid = true;
     if(this.detail != null && this.date != null)
       this.api.postApi('addEvent', {title:this.detail, date: this.date}).subscribe((res:any) => { })
+      alert("event ajouter");
+      this.detail = "";
+      this.date = null;
   }
 }

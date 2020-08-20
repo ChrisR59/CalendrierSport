@@ -13,6 +13,7 @@ export class BackofficeComponent implements OnInit {
 
   ngOnInit() {
   }
+  
   change = () => {
     this.searchService.searchSubject.next(this.search);
   }

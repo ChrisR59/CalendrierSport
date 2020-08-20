@@ -14,7 +14,7 @@ export class CalendarComponent implements OnInit {
   constructor(private api:ApiService) { }
 
   ngOnInit() {
-    this.api.getApi('events').subscribe((res:any)=> {
+    this.api.getApi('GetAll').subscribe((res:any)=> {
       this.events = res;
     })
   }

@@ -17,7 +17,6 @@ export class ApiService {
   }
 
   postApi = (link, data) => {
-    console.dir(data);
     return this.http.post(this.urlBase + link, data);
   }
 

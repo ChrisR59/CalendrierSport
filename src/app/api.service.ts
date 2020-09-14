@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
-  urlBase = "http://localhost:52277/";
+  urlBase = "http://localhost:52277";
+  ObservableList : Subject<any> = new Subject<any>();
 
   constructor(private http:HttpClient) { }
 
@@ -14,6 +17,11 @@ export class ApiService {
   }
 
   postApi = (link, data) => {
+    console.dir(data);
     return this.http.post(this.urlBase + link, data);
+  }
+
+  delete = (url) => {
+    return this.http.delete(this.urlBase+"/"+url);
   }
 }

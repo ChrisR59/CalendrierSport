@@ -8,25 +8,25 @@ import * as moment from 'moment';
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent implements OnInit {
-  detail:string;
-  date:Date;
-  valid:boolean = false;
+  detail: string;
+  date: string;
+  valid: boolean = false;
 
-  constructor(private api:ApiService) {
-    this.date = new Date();
-   }
-  
-
-  ngOnInit() {
+  constructor(private api: ApiService) {
   }
+
+
+  ngOnInit() { }
 
   valider = () => {
     this.valid = true;
-    //this.date = moment(this.date , "DD/MM/YYYY HH:mm:ss").toDate();
-    if(this.detail != null && this.date != null)
-      this.api.postApi('AddDates', {title:this.detail, date: this.date.toISOString()}).subscribe((res:any) => { })
-      alert("event ajouter" + this.date);
+
+    if (this.detail != null && this.date != null) {
+      this.api.postApi('/AddDates', { Title: this.detail, start: this.date }).subscribe((res: any) => { })
+      alert("L'évenement à bien été ajouté.");
       this.detail = "";
       this.date = null;
+      this.api.ObservableList.next();
+    }
   }
 }

@@ -13,20 +13,27 @@ export class ListEventComponent implements OnInit {
   constructor(private api:ApiService, private searchService:SearchServiceService) { }
 
   ngOnInit() {
-    this.api.getApi('GetAll').subscribe((res:any)=> {
-      this.events = res;
-    })
+    this.GetListEvents();
+    
+    this.api.ObservableList.subscribe(() => {
+      this.GetListEvents();
+    });
 
     this.searchService.searchSubject.subscribe(s=> {
-      this.api.postApi('events', {search:s}).subscribe((res:any) => {
+      this.api.postApi('/events', {search:s}).subscribe((res:any) => {
         this.events = res;
       })
     })
   }
 
-  delete = (e) => {
-    var id = 0;
-    this.api.postApi('Delete', e).subscribe((res:any) => {
+  GetListEvents = () => {
+    this.api.getApi('/GetAll').subscribe((res:any)=> {
+      this.events = res;
+    })
+  }
+
+  delete = (EventId) => {
+    this.api.delete('Delete/'  + EventId).subscribe((res:any) => {
       this.events = res;
     })
   }

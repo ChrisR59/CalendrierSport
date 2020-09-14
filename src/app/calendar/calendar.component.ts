@@ -9,14 +9,18 @@ import { ApiService } from '../api.service';
 })
 export class CalendarComponent implements OnInit {
   calendarPlugins = [dayGridPlugin]; // important!
-  events = [];
+  events = [  ];
 
-  constructor(private api:ApiService) { }
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
-    this.api.getApi('GetAll').subscribe((res:any)=> {
+      this.GetEvents();      
+      this.events[4].start;
+  }
+
+  GetEvents = () => {
+    this.api.getApi('/GetAll').subscribe((res: any) => {
       this.events = res;
     })
   }
-
 }

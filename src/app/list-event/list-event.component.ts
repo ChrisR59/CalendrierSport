@@ -18,11 +18,15 @@ export class ListEventComponent implements OnInit {
     this.api.ObservableList.subscribe(() => {
       this.GetListEvents();
     });
-
+    
     this.searchService.searchSubject.subscribe(s=> {
-      this.api.postApi('/events', {search:s}).subscribe((res:any) => {
-        this.events = res;
-      })
+      if(s != ""){
+        this.api.postApi('/GetSearch/' + s, {search:s}).subscribe((res:any) => {
+          this.events = res;
+        })
+      } else {
+        this.GetListEvents();
+      }
     })
   }
 

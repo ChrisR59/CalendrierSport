@@ -8,25 +8,43 @@ import * as moment from 'moment';
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent implements OnInit {
-  detail: string;
+  id : number;
+  title: string;
   date: string;
-  valid: boolean = false;
 
   constructor(private api: ApiService) {
   }
 
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.api.ObservableEditEvent.subscribe((Event)=>{
+      this.id = Event.id;
+      this.title = Event.title;
+      this.date = Event.start;
+      console.log(this.id);
+    })
+  }
 
   valider = () => {
-    this.valid = true;
-
-    if (this.detail != null && this.date != null) {
-      this.api.postApi('/AddDates', { Title: this.detail, start: this.date }).subscribe((res: any) => { })
-      alert("L'évenement à bien été ajouté.");
-      this.detail = "";
-      this.date = null;
-      this.api.ObservableList.next();
+    console.log(this.id);
+    if(this.id == null){
+      if (this.title != null && this.date != null) {
+        this.api.postApi('/AddDates', { Title: this.title, start: this.date }).subscribe((res: any) => { })
+        alert("L'évenement à bien été ajouté.");
+        this.id = null;
+        this.title = "";
+        this.date = "";
+        this.api.ObservableList.next();
+      }
+    } else {
+      if (this.title != null && this.date != null) {
+        this.api.put('/EditDate/' + this.id, {Id : this.id, Title: this.title, start: this.date }).subscribe((res: any) => { })
+        alert("L'évenement à bien été modifié.");
+        this.id = null;
+        this.title = "";
+        this.date = "";
+        this.api.ObservableList.next();
+      }
     }
   }
 }

@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 export class ApiService {
   urlBase = "http://localhost:52277";
   ObservableList : Subject<any> = new Subject<any>();
+  ObservableEditEvent : Subject<any> = new Subject<any>();
 
   constructor(private http:HttpClient) { }
 
@@ -18,6 +19,10 @@ export class ApiService {
 
   postApi = (link, data) => {
     return this.http.post(this.urlBase + link, data);
+  }
+
+  put = (link,data) => {
+    return this.http.put(this.urlBase + link, data);
   }
 
   delete = (url) => {

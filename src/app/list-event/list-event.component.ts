@@ -28,12 +28,18 @@ export class ListEventComponent implements OnInit {
         this.GetListEvents();
       }
     })
+
   }
 
   GetListEvents = () => {
     this.api.getApi('/GetAll').subscribe((res:any)=> {
       this.events = res;
     })
+  }
+
+  edit = (Event) => {
+    this.api.ObservableEditEvent.next(Event);
+
   }
 
   delete = (EventId) => {

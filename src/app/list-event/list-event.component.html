@@ -4,7 +4,10 @@
             {{ e.title }}
         </div>
         <div class="col-2">
-            {{ e.date }}
+            {{ e.start }}
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" (click)="edit(e)">Modifier event</button>
         </div>
         <div class="col-2">
             <button class="btn btn-danger" (click)="delete(e.id)">Supprimer event</button>

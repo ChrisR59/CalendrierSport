@@ -12,6 +12,8 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { BackofficeComponent } from './backoffice/backoffice.component';
 import { AddEventComponent } from './add-event/add-event.component';
 import { ListEventComponent } from './list-event/list-event.component';
+import { AlertComponent } from './alert/alert.component';
+import { AlertModule } from './alert/alert.module';
 
 const route: Routes = [
   { path: '', component: CalendarComponent },
@@ -25,7 +27,8 @@ const route: Routes = [
     CalendarComponent,
     BackofficeComponent,
     AddEventComponent,
-    ListEventComponent
+    ListEventComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ const route: Routes = [
     FullCalendarModule,
     ReactiveFormsModule,
     FormsModule,
+    AlertModule,
     RouterModule.forRoot(route)
   ],
   providers: [],

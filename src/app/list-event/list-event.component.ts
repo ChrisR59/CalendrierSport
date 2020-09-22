@@ -45,6 +45,7 @@ export class ListEventComponent implements OnInit {
   delete = (EventId) => {
     this.api.delete('Delete/'  + EventId).subscribe((res:any) => {
       this.api.ObservableList.next();
+      alert("L'event a bien été supprimé");
     })
   }
 }

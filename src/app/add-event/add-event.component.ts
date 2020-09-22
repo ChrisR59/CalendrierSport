@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import * as moment from 'moment';
+import { AlertService } from '../alert/alert.service';
 
 @Component({
   selector: 'app-add-event',
@@ -15,7 +15,7 @@ export class AddEventComponent implements OnInit {
   dateIsValid : boolean;
   isValid : boolean = false;
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, protected AlertService : AlertService) {
   }
 
 
@@ -33,6 +33,7 @@ export class AddEventComponent implements OnInit {
       if(this.id == null){
           this.api.postApi('/AddDates', { Title: this.title, start: this.date }).subscribe((res: any) => { })
           alert("L'évenement à bien été ajouté.");
+          this.AlertService.success("L'évenement à bien été ajouté.");
       } else {
           this.api.put('/EditDate/' + this.id, {Id : this.id, Title: this.title, start: this.date }).subscribe((res: any) => { })
           alert("L'évenement à bien été modifié.");

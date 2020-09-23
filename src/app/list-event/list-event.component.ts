@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from '../alert/alert.service';
 import { ApiService } from '../api.service';
 import { SearchServiceService } from '../search-service.service';
 
@@ -10,7 +11,7 @@ import { SearchServiceService } from '../search-service.service';
 export class ListEventComponent implements OnInit {
   events = [];
 
-  constructor(private api:ApiService, private searchService:SearchServiceService) { }
+  constructor(private api:ApiService, private searchService:SearchServiceService, private AlertService : AlertService) { }
 
   ngOnInit() {
     this.GetListEvents();
@@ -39,13 +40,12 @@ export class ListEventComponent implements OnInit {
 
   edit = (Event) => {
     this.api.ObservableEditEvent.next(Event);
-
   }
 
   delete = (EventId) => {
     this.api.delete('Delete/'  + EventId).subscribe((res:any) => {
+      this.AlertService.success("L'event a bien été supprimé");
       this.api.ObservableList.next();
-      alert("L'event a bien été supprimé");
     })
   }
 }

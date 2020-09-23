@@ -1,4 +1,4 @@
-<div [ngClass]="{'alert alert-primary': IsValid}">
+<div [ngClass]="{'alert alert-success': IsValid}">
     <a *ngIf="IsValid" class="close" (click)="RemoveAlert()">&times;</a>
     {{ message }}
 </div>

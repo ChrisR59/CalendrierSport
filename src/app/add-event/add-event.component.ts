@@ -32,14 +32,14 @@ export class AddEventComponent implements OnInit {
     if(this.CheckFieldIsvalid()){
       if(this.id == null){
           this.api.postApi('/AddDates', { Title: this.title, start: this.date }).subscribe((res: any) => { })
-          alert("L'évenement à bien été ajouté.");
           this.AlertService.success("L'évenement à bien été ajouté.");
+          this.api.ObservableList.next();
       } else {
           this.api.put('/EditDate/' + this.id, {Id : this.id, Title: this.title, start: this.date }).subscribe((res: any) => { })
-          alert("L'évenement à bien été modifié.");
+          this.AlertService.success("L'évenement à bien été modifié.");
+          this.api.ObservableList.next();
       }
       this.InitFieldForm();   
-      this.api.ObservableList.next();
     }    
   }
 

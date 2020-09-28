@@ -63,7 +63,8 @@ export class AddEventComponent implements OnInit {
 
     if(this.titleIsValid && this.dateIsValid){
       return true;
-    } else{
+    } else {
+      this.AlertService.fail("Merci de remplir tous les champs");
       return false;
     }
   }

@@ -6,22 +6,31 @@ import { AlertService } from './alert.service';
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.css']
 })
-export class AlertComponent implements OnInit {
-  message : string;
-  IsValid : boolean = false;;
 
-  constructor(private AlertService : AlertService) { }
+export class AlertComponent implements OnInit {
+  message: string;
+  IsValidSuccess: boolean = false;
+  IsValidFail: boolean = false;
+
+  constructor(private AlertService: AlertService) { }
 
   ngOnInit() {
-
-    this.AlertService.ObservableAlert.subscribe((res)=> {
-      this.IsValid = true;
+    this.AlertService.ObservableAlertSuccess.subscribe((res) => {
       this.message = res;
+      this.IsValidFail = false;
+      this.IsValidSuccess = true;
+    })
+
+    this.AlertService.ObservableAlertFail.subscribe((res) => {
+      this.message = res;
+      this.IsValidSuccess = false;
+      this.IsValidFail = true;
     })
   }
 
   RemoveAlert = () => {
-    this.IsValid = false;
+    this.IsValidSuccess = false;
+    this.IsValidFail = false;
     this.message = "";
   }
 

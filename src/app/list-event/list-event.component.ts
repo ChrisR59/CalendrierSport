@@ -29,7 +29,6 @@ export class ListEventComponent implements OnInit {
         this.GetListEvents();
       }
     })
-
   }
 
   GetListEvents = () => {

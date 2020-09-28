@@ -6,12 +6,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AlertService {
-  ObservableAlert : Subject<any> = new Subject<any>();
+  ObservableAlertSuccess : Subject<any> = new Subject<any>();
+  ObservableAlertFail : Subject<any> = new Subject<any>();
 
   constructor(private http:HttpClient) { }
   
-  success = (message : string) => {//on recois le message ici
-    //this.alert(new Alert());
-    this.ObservableAlert.next(message);
+  success = (message : string) => {
+    this.ObservableAlertSuccess.next(message);
+  }
+
+  fail = (message : string) => {
+    this.ObservableAlertFail.next(message);
   }
 }

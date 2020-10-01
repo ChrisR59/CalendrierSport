@@ -9,7 +9,8 @@ import { ApiService } from '../api.service';
 })
 export class CalendarComponent implements OnInit {
   calendarPlugins = [dayGridPlugin]; // important!
-  events = [  ];
+  events = [];
+  //ex : {title : "test", start:"2020-10-01", end:"2020-10-03"}
 
   constructor(private api: ApiService) { }
 

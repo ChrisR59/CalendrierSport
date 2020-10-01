@@ -2,10 +2,13 @@
     <app-alert></app-alert>
     <div class="row form-group">
         <div class="col-6 text-center">
-            <label for="">Detail </label>
+            <label for="">Detail</label>
         </div>
-        <div class="col-6 text-center">
-            <label for="">Date </label>
+        <div class="col-3 text-center">
+            <label for="">Début</label>
+        </div>
+        <div class="col-3 text-center">
+            <label for="">Fin</label>
         </div>
     </div>
     <div class="row form-group">
@@ -13,9 +16,12 @@
             <input class="form-control" type="text" [ngClass]="{alert: isValid == true && titleIsValid == false}"
                 [(ngModel)]="title" required>
         </div>
-        <div class="col-6">
+        <div class="col-3">
             <input class="form-control" type="date" [ngClass]="{alert: isValid == true && dateIsValid == false}"
-                [(ngModel)]="date" required>
+                [(ngModel)]="StartDate" required>
+        </div>
+        <div class="col-3">
+            <input class="form-control" type="date" [(ngModel)]="EndDate" required>
         </div>
     </div>
     <div class="row">

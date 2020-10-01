@@ -10,6 +10,7 @@ import { SearchServiceService } from '../search-service.service';
 })
 export class ListEventComponent implements OnInit {
   events = [];
+  //ex : {title : "test", start:"2020-10-01", end:"2020-10-03"}
 
   constructor(private api:ApiService, private searchService:SearchServiceService, private AlertService : AlertService) { }
 

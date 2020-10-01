@@ -10,7 +10,8 @@ import { AlertService } from '../alert/alert.service';
 export class AddEventComponent implements OnInit {
   id : number;
   title: string;
-  date: string;
+  StartDate: string;
+  EndDate: string;
   titleIsValid : boolean;
   dateIsValid : boolean;
   isValid : boolean = false;
@@ -23,7 +24,8 @@ export class AddEventComponent implements OnInit {
     this.api.ObservableEditEvent.subscribe((Event)=>{
       this.id = Event.id;
       this.title = Event.title;
-      this.date = Event.start;
+      this.StartDate = Event.start;
+      this.EndDate = Event.end
     })
   }
 
@@ -31,11 +33,11 @@ export class AddEventComponent implements OnInit {
     this.isValid = true;
     if(this.CheckFieldIsvalid()){
       if(this.id == null){
-          this.api.postApi('/AddDates', { Title: this.title, start: this.date }).subscribe((res: any) => { })
+          this.api.postApi('/AddDates', { Title: this.title, start: this.StartDate, end: this.EndDate }).subscribe((res: any) => { })
           this.AlertService.success("L'évenement à bien été ajouté.");
           this.api.ObservableList.next();
       } else {
-          this.api.put('/EditDate/' + this.id, {Id : this.id, Title: this.title, start: this.date }).subscribe((res: any) => { })
+          this.api.put('/EditDate/' + this.id, {Id : this.id, Title: this.title, start: this.StartDate, end: this.EndDate }).subscribe((res: any) => { })
           this.AlertService.success("L'évenement à bien été modifié.");
           this.api.ObservableList.next();
       }
@@ -46,7 +48,8 @@ export class AddEventComponent implements OnInit {
   InitFieldForm = () => {
     this.id = null;
     this.title = "";
-    this.date = undefined;
+    this.StartDate = undefined;
+    this.EndDate = undefined;
   }
 
   CheckFieldIsvalid = () => {
@@ -57,8 +60,12 @@ export class AddEventComponent implements OnInit {
       this.titleIsValid = true;
     }
 
-    if(this.date != "" && this.date != undefined) {
+    if(this.StartDate != "" && this.StartDate != undefined) {
       this.dateIsValid = true;
+    }
+
+    if(this.EndDate == "" || this.EndDate == undefined){
+      this.EndDate = this.StartDate;
     }
 
     if(this.titleIsValid && this.dateIsValid){

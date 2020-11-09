@@ -1,3 +1,14 @@
 .alert {
     border-color : red;
 }
+
+app-alert {
+    position: absolute;
+    z-index: 1;
+    width : 50%;
+    left : 25%;
+}
+
+h2 {
+    font-size : 1.8rem;
+}

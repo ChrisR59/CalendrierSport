@@ -1,30 +1,33 @@
-<article class="col-8 offset-2">
-    <app-alert></app-alert>
-    <div class="row form-group">
-        <div class="col-6 text-center">
-            <label for="">Detail</label>
+<div class="row pt-5">
+    <h2 class="col-2">Ajouter un événement</h2>
+    <article class="col-9">
+        <app-alert></app-alert>
+        <div class="row form-group">
+            <div class="col-4 text-center">
+                <label for="">Detail de l'événement *</label>
+            </div>
+            <div class="col-3 text-center">
+                <label for="">Début *</label>
+            </div>
+            <div class="col-3 text-center">
+                <label for="">Fin</label>
+            </div>
         </div>
-        <div class="col-3 text-center">
-            <label for="">Début</label>
+        <div class="row form-group">
+            <div class="col-4">
+                <input class="form-control" type="text" [ngClass]="{alert: isValid == true && titleIsValid == false}"
+                    [(ngModel)]="title" required>
+            </div>
+            <div class="col-3">
+                <input class="form-control" type="date" [ngClass]="{alert: isValid == true && dateIsValid == false}"
+                    [(ngModel)]="StartDate" required>
+            </div>
+            <div class="col-3">
+                <input class="form-control" type="date" [(ngModel)]="EndDate" required>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary m-auto" (click)="valider()">Valider</button>
+            </div>
         </div>
-        <div class="col-3 text-center">
-            <label for="">Fin</label>
-        </div>
-    </div>
-    <div class="row form-group">
-        <div class="col-6">
-            <input class="form-control" type="text" [ngClass]="{alert: isValid == true && titleIsValid == false}"
-                [(ngModel)]="title" required>
-        </div>
-        <div class="col-3">
-            <input class="form-control" type="date" [ngClass]="{alert: isValid == true && dateIsValid == false}"
-                [(ngModel)]="StartDate" required>
-        </div>
-        <div class="col-3">
-            <input class="form-control" type="date" [(ngModel)]="EndDate" required>
-        </div>
-    </div>
-    <div class="row">
-        <button class="btn btn-primary m-auto" (click)="valider()">Valider</button>
-    </div>
-</article>
+    </article>
+</div>

@@ -13,6 +13,7 @@ export class AddEventComponent implements OnInit {
   type: string = "";
   StartDate: string;
   EndDate: string;
+  btn : string = "Ajouter";
   titleIsValid: boolean;
   dateIsValid: boolean;
   typeIsValid : boolean;
@@ -24,6 +25,7 @@ export class AddEventComponent implements OnInit {
 
   ngOnInit() {
     this.api.ObservableEditEvent.subscribe((Event) => {
+      this.btn = "Modifier";
       this.id = Event.id;
       this.title = Event.title;
       this.type = Event.type;

@@ -10,10 +10,12 @@ import { AlertService } from '../alert/alert.service';
 export class AddEventComponent implements OnInit {
   id: number;
   title: string;
+  type: string = "";
   StartDate: string;
   EndDate: string;
   titleIsValid: boolean;
   dateIsValid: boolean;
+  typeIsValid : boolean;
   isValid: boolean = false;
 
   constructor(private api: ApiService, protected AlertService: AlertService) {
@@ -24,6 +26,7 @@ export class AddEventComponent implements OnInit {
     this.api.ObservableEditEvent.subscribe((Event) => {
       this.id = Event.id;
       this.title = Event.title;
+      this.type = Event.type;
       this.StartDate = Event.start;
       this.EndDate = Event.end
     })
@@ -33,13 +36,13 @@ export class AddEventComponent implements OnInit {
     this.isValid = true;
     if (this.CheckFieldIsvalid()) {
       if (this.id == null) {
-        this.api.postApi('/AddDates', { Title: this.title, start: this.StartDate, end: this.EndDate }).subscribe((res: any) => {
+        this.api.postApi('/AddDates', { Title: this.title, Type : this.type, start: this.StartDate, end: this.EndDate }).subscribe((res: any) => {
           if(!res.error){
             this.AlertService.success("L'évenement '" + res.titleEvent + "' à bien été ajouté.");
           }
         })
       } else {
-        this.api.put('/EditDate/' + this.id, { Id: this.id, Title: this.title, start: this.StartDate, end: this.EndDate }).subscribe((res: any) => {
+        this.api.put('/EditDate/' + this.id, { Id: this.id, Title: this.title, Type : this.type, start: this.StartDate, end: this.EndDate }).subscribe((res: any) => {
           if(!res.error){
             this.AlertService.success("L'évenement '" + res.titleEvent + "' à bien été modifié.");
           }
@@ -54,16 +57,22 @@ export class AddEventComponent implements OnInit {
   InitFieldForm = () => {
     this.id = null;
     this.title = "";
+    this.type = "";
     this.StartDate = undefined;
     this.EndDate = undefined;
   }
 
   CheckFieldIsvalid = () => {
     this.titleIsValid = false;
+    this.typeIsValid = false;
     this.dateIsValid = false;
 
     if (this.title != "" && this.title != undefined) {
       this.titleIsValid = true;
+    }
+
+    if (this.type != "" && this.type != undefined) {
+      this.typeIsValid = true;
     }
 
     if (this.StartDate != "" && this.StartDate != undefined) {
@@ -74,7 +83,7 @@ export class AddEventComponent implements OnInit {
       this.EndDate = this.StartDate;
     }
 
-    if (this.titleIsValid && this.dateIsValid) {
+    if (this.titleIsValid && this.dateIsValid && this.typeIsValid) {
       return true;
     } else {
       this.AlertService.fail("Merci de remplir tous les champs");

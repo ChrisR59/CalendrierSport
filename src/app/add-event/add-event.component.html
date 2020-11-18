@@ -2,22 +2,24 @@
     <article class="col-12">
         <app-alert></app-alert>
         <div class="row form-group">
-            <div class="col-4">
-                <label for="">Detail de l'événement *</label>
+            <div class="col-5">
                 <input class="form-control" type="text" [ngClass]="{alert: isValid == true && titleIsValid == false}"
-                    [(ngModel)]="title" required>
+                    [(ngModel)]="title" placeholder="Detail de l'événement *" required>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <label class="col-3">Début*</label>
+                    <input class="form-control col" type="date" [ngClass]="{alert: isValid == true && dateIsValid == false}"
+                        [(ngModel)]="StartDate" required>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <label class="col-3">Fin</label>
+                    <input class="form-control col" type="date" [(ngModel)]="EndDate" required>
+                </div>
             </div>
             <div class="col-2">
-                <label for="">Début *</label>
-                <input class="form-control" type="date" [ngClass]="{alert: isValid == true && dateIsValid == false}"
-                    [(ngModel)]="StartDate" required>
-            </div>
-            <div class="col-2">
-                <label for="">Fin</label>
-                <input class="form-control" type="date" [(ngModel)]="EndDate" required>
-            </div>
-            <div class="col-3">
-                <label>&nbsp;</label>
                 <select class="form-control" [ngClass]="{alert: isValid == true && typeIsValid == false}" [(ngModel)]="type">
                     <option value="">-- Choisir un Sport --</option>
                     <option value="foot">Foot</option>

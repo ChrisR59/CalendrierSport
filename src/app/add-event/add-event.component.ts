@@ -22,7 +22,9 @@ export class AddEventComponent implements OnInit {
   constructor(private api: ApiService, protected AlertService: AlertService) {
   }
 
-
+  /**
+   * Observable edit event
+   */
   ngOnInit() {
     this.api.ObservableEditEvent.subscribe((Event) => {
       this.btn = "Modifier";
@@ -34,6 +36,9 @@ export class AddEventComponent implements OnInit {
     })
   }
 
+  /**
+   * check if valid event before seed to api
+   */
   valider = () => {
     this.isValid = true;
     if (this.CheckFieldIsvalid()) {
@@ -56,6 +61,9 @@ export class AddEventComponent implements OnInit {
     }
   }
 
+  /**
+   * initialize field form
+   */
   InitFieldForm = () => {
     this.id = null;
     this.title = "";
@@ -64,6 +72,9 @@ export class AddEventComponent implements OnInit {
     this.EndDate = undefined;
   }
 
+  /**
+   * check if content field is correct
+   */
   CheckFieldIsvalid = () => {
     this.titleIsValid = false;
     this.typeIsValid = false;

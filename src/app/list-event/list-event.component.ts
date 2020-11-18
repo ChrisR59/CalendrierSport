@@ -10,10 +10,14 @@ import { SearchServiceService } from '../search-service.service';
 })
 export class ListEventComponent implements OnInit {
   events = [];
-  //ex : {title : "test", start:"2020-10-01", end:"2020-10-03"}
 
   constructor(private api:ApiService, private searchService:SearchServiceService, private AlertService : AlertService) { }
 
+  /**
+   * Initialize a list event
+   * Observable on the list 
+   * observable on the field search for find a element of the list
+   */
   ngOnInit() {
     this.GetListEvents();
     
@@ -32,16 +36,27 @@ export class ListEventComponent implements OnInit {
     })
   }
 
+  /**
+   * Maj of the list
+   */
   GetListEvents = () => {
     this.api.getApi('/GetAll').subscribe((res:any)=> {
       this.events = res;
     })
   }
 
+  /**
+   * Update one event
+   * @param Event one event
+   */
   edit = (Event) => {
     this.api.ObservableEditEvent.next(Event);
   }
 
+  /**
+   * Remove one Event
+   * @param EventId Id of event
+   */
   delete = (EventId) => {
     this.api.delete('Delete/'  + EventId).subscribe((res:any) => {
       if(!res.error){

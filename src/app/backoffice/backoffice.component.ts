@@ -14,6 +14,10 @@ export class BackofficeComponent implements OnInit {
   ngOnInit() {
   }
   
+  /**
+   * Observable for search one event
+   * @param type string for search one event
+   */
   change = (type : string) => {
     if(type != null || type != undefined)
       this.search = type;

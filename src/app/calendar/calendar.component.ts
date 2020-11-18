@@ -14,11 +14,17 @@ export class CalendarComponent implements OnInit {
 
   constructor(private api: ApiService) { }
 
+  /**
+   * call method for get event
+   */
   ngOnInit() {
-      this.GetEvents();      
-      this.events[4].start;
+    this.GetEvents();
+    this.events[4].start;//Dont touch
   }
 
+  /**
+    * Get element of the list from the bdd
+   */
   GetEvents = () => {
     this.api.getApi('/GetAll').subscribe((res: any) => {
       this.events = res;

@@ -14,6 +14,9 @@ export class AlertComponent implements OnInit {
 
   constructor(private AlertService: AlertService) { }
 
+  /**
+   * Observale for message alert
+   */
   ngOnInit() {
     this.AlertService.ObservableAlertSuccess.subscribe((res) => {
       this.message = res;
@@ -28,10 +31,12 @@ export class AlertComponent implements OnInit {
     })
   }
 
+  /**
+   * Remove message alert
+   */
   RemoveAlert = () => {
     this.IsValidSuccess = false;
     this.IsValidFail = false;
     this.message = "";
   }
-
 }

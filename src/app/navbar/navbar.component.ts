@@ -14,11 +14,17 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Visual effect on buttons
+   */
   ValidHome = () => {
     this.HomeIsValid = true;
     this.BackOfficeIsValid = false;
   }
 
+  /**
+   * Visual effect on buttons
+   */
   ValidBackOffice = () => {
     this.HomeIsValid = false;
     this.BackOfficeIsValid = true;

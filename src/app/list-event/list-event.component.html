@@ -1,19 +1,20 @@
 <article>
-    <div class="row m-1 p-1" *ngFor="let e of events">
-        <div class="col m-auto">
-            {{ e.title }}
-        </div>
-        <div class="col-2 m-auto">
-            {{ e.start }}
-        </div>
-        <div class="col-2 m-auto">
-            {{ e.end }}
-        </div>
-        <div class="col-2">
-            <button class="btn btn-primary" (click)="edit(e)">Modifier event</button>
-        </div>
-        <div class="col-2">
-            <button class="btn btn-danger" (click)="delete(e.id)">Supprimer event</button>
-        </div>
-    </div>
+    <table class="table table-hover">
+        <thead class="">
+            <th scope="col">Titre</th>
+            <th scope="col">Date de début</th>
+            <th scope="col">Date de fin</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of events">
+                <td>{{ e.title }}</td>
+                <td>{{ e.start }}</td>
+                <td>{{ e.end }}</td>
+                <td><button class="btn btn-primary" (click)="edit(e)">Modifier event</button></td>
+                <td><button class="btn btn-danger" (click)="delete(e.id)">Supprimer event</button></td>
+            </tr>
+        </tbody>
+    </table>
 </article>

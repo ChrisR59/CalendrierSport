@@ -46,6 +46,9 @@ export class ListEventComponent implements OnInit {
     })
   }
 
+  /**
+   * Format date yyyy-mm-dd => dd/mm/yyyy in startformat and endformat
+   */
   formatDate = () => {
     for(const event of this.events) {
       let dateStart = event.start.split('-');

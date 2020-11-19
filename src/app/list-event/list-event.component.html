@@ -10,8 +10,8 @@
         <tbody>
             <tr *ngFor="let e of events">
                 <td>{{ e.title }}</td>
-                <td>{{ e.start }}</td>
-                <td>{{ e.end }}</td>
+                <td>{{ e.startFormat }}</td>
+                <td>{{ e.endFormat }}</td>
                 <td><button class="btn btn-primary" (click)="edit(e)">Modifier event</button></td>
                 <td><button class="btn btn-danger" (click)="delete(e.id)">Supprimer event</button></td>
             </tr>

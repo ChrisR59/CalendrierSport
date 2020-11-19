@@ -42,7 +42,17 @@ export class ListEventComponent implements OnInit {
   GetListEvents = () => {
     this.api.getApi('/GetAll').subscribe((res:any)=> {
       this.events = res;
+      this.formatDate();
     })
+  }
+
+  formatDate = () => {
+    for(const event of this.events) {
+      let dateStart = event.start.split('-');
+      let dateEnd = event.end.split('-');
+      event.startFormat = dateStart[2] + "/" + dateStart[1] + "/" + dateStart[0]
+      event.endFormat = dateEnd[2] + "/" + dateEnd[1] + "/" + dateEnd[0]
+    }
   }
 
   /**

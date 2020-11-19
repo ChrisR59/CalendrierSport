@@ -57,12 +57,12 @@ export class AddEventComponent implements OnInit {
         this.api.put('/EditDate/' + this.id, { Id: this.id, Title: this.title, Type : this.type, start: this.StartDate, end: this.EndDate }).subscribe((res: any) => {
           if(!res.error){
             this.AlertService.success("L'évenement '" + res.titleEvent + "' à bien été modifié.");
-          }
+          } 
          })
       }
       
       this.InitFieldForm();
-      this.api.ObservableList.next();
+      setTimeout(() => {this.api.ObservableList.next()}, 1000);//Ne pas supprimer bug list ne s'actualise pas la première fois
     }
   }
 

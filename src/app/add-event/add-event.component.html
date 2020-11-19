@@ -1,7 +1,7 @@
-<div class="row pt-5">
+<div class="row pt-4">
     <article class="col-12">
         <app-alert></app-alert>
-        <div class="row form-group">
+        <div class="row form-group pt-5">
             <div class="col-5">
                 <input class="form-control" type="text" [ngClass]="{alert: isValid == true && titleIsValid == false}"
                     [(ngModel)]="title" placeholder="Detail de l'événement *" required>
@@ -22,10 +22,7 @@
             <div class="col-2">
                 <select class="form-control" [ngClass]="{alert: isValid == true && typeIsValid == false}" [(ngModel)]="type">
                     <option value="">-- Choisir un Sport --</option>
-                    <option value="foot">Foot</option>
-                    <option value="f1">Formule 1</option>
-                    <option value="tennis">Tennis</option>
-                    <option value="autre">Autre</option>
+                    <option value="{{ t.type }}" *ngFor="let t of TypeEvent">{{ t.type }}</option>
                 </select>
             </div>
             <div class="col-1">

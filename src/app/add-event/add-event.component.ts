@@ -18,6 +18,7 @@ export class AddEventComponent implements OnInit {
   dateIsValid: boolean;
   typeIsValid : boolean;
   isValid: boolean = false;
+  TypeEvent: [];
 
   constructor(private api: ApiService, protected AlertService: AlertService) {
   }
@@ -26,6 +27,10 @@ export class AddEventComponent implements OnInit {
    * Observable edit event
    */
   ngOnInit() {
+    this.api.postApi('/TypeEvent',{}).subscribe((res:any) => {
+      this.TypeEvent = res;
+    })
+
     this.api.ObservableEditEvent.subscribe((Event) => {
       this.btn = "Modifier";
       this.id = Event.id;

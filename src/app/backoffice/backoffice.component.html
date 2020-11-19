@@ -5,15 +5,9 @@
         <div class="col-4 form-group m-3 p-3">
             <input type="text" class="form-control" (keyup)="change()" [(ngModel)]="search" placeholder="titre de l'event">
         </div>
-        <div class="col-4 m-3 p-3 row">
-            <div class="m-1">
-                <button class="btn btn-primary" (click)="change('Foot')">Foot</button> 
-            </div>
-            <div class="m-1">
-                <button class="btn btn-primary" (click)="change('F1')">Formule 1</button> 
-            </div>
-            <div class="m-1">
-                <button class="btn btn-primary" (click)="change('Tennis')">Tennis</button> 
+        <div class="col m-3 p-3 row">
+            <div class="m-1" *ngFor="let t of TypeEvent">
+                <button class="btn btn-primary" (click)="change(t.type)">{{ t.type }}</button> 
             </div>
         </div>
     </div>

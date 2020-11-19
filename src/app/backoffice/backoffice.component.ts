@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 import { SearchServiceService } from '../search-service.service';
 
 @Component({
@@ -8,10 +9,14 @@ import { SearchServiceService } from '../search-service.service';
 })
 export class BackofficeComponent implements OnInit {
   search:string;
+  TypeEvent: [];
 
-  constructor(private searchService:SearchServiceService) { }
+  constructor(private searchService:SearchServiceService, private api:ApiService) { }
 
   ngOnInit() {
+    this.api.postApi('/TypeEvent',{}).subscribe((res:any) => {
+      this.TypeEvent = res;
+    })
   }
   
   /**

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { Routes, RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { AddEventComponent } from './add-event/add-event.component';
 import { ListEventComponent } from './list-event/list-event.component';
 import { AlertComponent } from './alert/alert.component';
 import { AlertModule } from './alert/alert.module';
+import { ScrollToTopDirective } from './scroll-to-top.directive';
 
 const route: Routes = [
   { path: '', component: CalendarComponent },
@@ -28,7 +30,8 @@ const route: Routes = [
     BackofficeComponent,
     AddEventComponent,
     ListEventComponent,
-    AlertComponent
+    AlertComponent,
+    ScrollToTopDirective
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,10 @@ const route: Routes = [
     ReactiveFormsModule,
     FormsModule,
     AlertModule,
-    RouterModule.forRoot(route)
+    FontAwesomeModule,
+    RouterModule.forRoot(route,{
+      anchorScrolling:'enabled'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

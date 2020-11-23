@@ -1,3 +1,11 @@
 table td {
     vertical-align: middle;
 }
+
+.btn_scroll-top {
+    bottom: 64px;
+    position: fixed;
+    right: 100px;
+    transition: opacity 0.25s ease-in-out;
+    z-index: 1000;
+  }

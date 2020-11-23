@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { AlertService } from '../alert/alert.service';
 import { ApiService } from '../api.service';
 import { SearchServiceService } from '../search-service.service';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list-event',
@@ -9,9 +10,10 @@ import { SearchServiceService } from '../search-service.service';
   styleUrls: ['./list-event.component.css']
 })
 export class ListEventComponent implements OnInit {
-  events = [];
+  events = [];  
+  faArrowUp = faArrowUp;
 
-  constructor(private api:ApiService, private searchService:SearchServiceService, private AlertService : AlertService) { }
+  constructor(private api:ApiService, private searchService:SearchServiceService, private AlertService : AlertService, private renderer : Renderer2) { }
 
   /**
    * Initialize a list event

@@ -7,7 +7,6 @@ export class ScrollToTopDirective {
   private position = 150;
 
   constructor(private eltView : ElementRef) {
-    console.log('test');
     if(document.documentElement.scrollTop > this.position || document.body.scrollTop > this.position)
       this.eltView.nativeElement.style.opacity = 1;
     else

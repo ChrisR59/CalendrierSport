@@ -2,11 +2,11 @@
     <form class="offset-4 col-4 text-center mt-5 pt-5">
         <div class="form-group">
             <label for="Pseudo">Pseudo</label>
-            <input type="text" class="form-control" id="Pseudo" [(ngModel)]="pseudo">
+            <input type="text" class="form-control" id="Pseudo" [(ngModel)]="pseudo" name="pseudo" required>
         </div>
         <div class="form-group">
             <label for="Password">Password</label>
-            <input type="password" class="form-control" id="Password" [(ngModel)]="password">
+            <input type="password" class="form-control" id="Password" [(ngModel)]="password" name="password" required>
         </div>
         <button type="button" class="btn btn-primary" (click)="signin()">Connexion</button>
     </form>

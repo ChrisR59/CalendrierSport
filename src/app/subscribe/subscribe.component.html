@@ -1,1 +1,26 @@
-<p>subscribe works!</p>
+<div class="container pt-5">
+    <h2 class="offset-4 col-4 text-center">Inscription</h2>
+    <form class="offset-4 col-4 text-center mt-5 pt-5">
+        <div class="form-group">
+            <label for="Pseudo">Pseudo</label>
+            <input type="text" class="form-control" id="Pseudo" [(ngModel)]="pseudo">
+        </div>
+        <div class="form-group">
+          <label for="Email1">Email</label>
+          <input type="email" class="form-control" id="Email1" placeholder="name@example.com" [(ngModel)]="email1">
+        </div>
+        <div class="form-group">
+          <label for="Email2">Confirmer Email</label>
+          <input type="email" class="form-control" id="Email2" placeholder="name@example.com" [(ngModel)]="email2">
+        </div>
+        <div class="form-group">
+            <label for="Password1">Password</label>
+            <input type="password" class="form-control" id="Password1" [(ngModel)]="password1">
+        </div>
+        <div class="form-group">
+            <label for="Password2">Confirmer Password</label>
+            <input type="password" class="form-control" id="Password2" [(ngModel)]="password2">
+        </div>
+        <button type="button" class="btn btn-primary" (click)="subscribe()">Inscription</button>
+    </form>
+</div>

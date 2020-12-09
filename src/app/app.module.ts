@@ -16,10 +16,14 @@ import { ListEventComponent } from './list-event/list-event.component';
 import { AlertComponent } from './alert/alert.component';
 import { AlertModule } from './alert/alert.module';
 import { ScrollToTopDirective } from './scroll-to-top.directive';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
 
 const route: Routes = [
-  { path: '', component: CalendarComponent },
-  { path: 'backOffice', component: BackofficeComponent }
+  { path: '', component: SignInComponent },
+  { path: 'Home', component: CalendarComponent },
+  { path: 'Subscribe', component: SubscribeComponent },
+  { path: 'BackOffice', component: BackofficeComponent }
 ]
 
 @NgModule({
@@ -31,7 +35,9 @@ const route: Routes = [
     AddEventComponent,
     ListEventComponent,
     AlertComponent,
-    ScrollToTopDirective
+    ScrollToTopDirective,
+    SignInComponent,
+    SubscribeComponent
   ],
   imports: [
     BrowserModule,

@@ -5,10 +5,10 @@
     <div id="my-nav" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item mx-2" [ngClass]="{'active': HomeIsValid == true}">
-                <a class="nav-link rounded" [ngClass]="{'bg-item': HomeIsValid == true}" routerLink="/" (click)="ValidHome()">Accueil</a>
+                <a class="nav-link rounded" [ngClass]="{'bg-item': HomeIsValid == true}" routerLink="/Home" (click)="ValidHome()">Accueil</a>
             </li>
             <li class="nav-item" [ngClass]="{'active': BackOfficeIsValid == true}">
-                <a class="nav-link rounded" [ngClass]="{'bg-item': BackOfficeIsValid == true}" routerLink="/backOffice" (click)="ValidBackOffice()">Back Office</a>
+                <a class="nav-link rounded" [ngClass]="{'bg-item': BackOfficeIsValid == true}" routerLink="/BackOffice" (click)="ValidBackOffice()">Back Office</a>
             </li>
         </ul>
     </div>
